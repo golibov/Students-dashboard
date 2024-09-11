@@ -5,12 +5,12 @@ function addNewStudentBtn() {
             <label for="rasmTanlash" class="cursor-pointer flex justify-center items-center mx-auto w-[90px] h-[90px] rounded-full bg-gray-100">
                 <img id="previewImage" src="./images/enter-img.svg" alt="enter-image" width="90" height="90">
             </label>
-            <input type="file" id="rasmTanlash" accept="image/*" class="hidden">
-            <input id="name" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enter your name">
-            <input id="email" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="email" placeholder="Enter your email">
-            <input maxlength="10" minlength="10" id="phone" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="number" placeholder="Enter your phone">
-            <input id="EnrollNumber" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enroll Number">
-            <input id="admissionDate" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Date of admission (e.g., 25-Dec-2006)">
+            <input type="file" id="rasmTanlash"  required accept="image/*" class="hidden">
+            <input id="name" autocomplete="off" required class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enter your name">
+            <input id="email" autocomplete="off" required class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="email" placeholder="Enter your email">
+            <input maxlength="10" minlength="10" required id="phone" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="number" placeholder="Enter your phone">
+            <input id="EnrollNumber" autocomplete="off" required class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enroll Number">
+            <input id="admissionDate" autocomplete="off" required class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Date of admission (e.g., 25-Dec-2006)">
             
             <div class="flex gap-[10px] mt-[10px] justify-center">
                 <button onclick="add()" class="bg-[#FEAF00] text-white rounded-[4px] px-[20px] py-[10px]">Add</button>
@@ -56,7 +56,7 @@ function add() {
     const previewImage = document.getElementById('previewImage').src;
 
     if (!name || !email || !phone || !EnrollNumber || !admissionDate) {
-        alert('Please fill all fields.');
+        alert('Iltimos, barcha maydonlarni toʻldiring.');
         return;
     }
 
@@ -214,32 +214,12 @@ function more(index) {
     let students = JSON.parse(localStorage.getItem('students')) || [];
     const student = students[index];
 
-    const modal = document.getElementById('modal');
-    const userList = document.querySelector('.user-list');
+ 
+    localStorage.setItem('selectedStudent', JSON.stringify(student));
     
-
-
-    modal.innerHTML = `
-        <div class="w-[470px] h-[550px] bg-white rounded-[20px] text-center flex flex-col justify-center shadow-inputShadow p-6">
-            <label class="cursor-pointer flex justify-center items-center mx-auto w-[90px] h-[90px] rounded-full bg-gray-100">
-                <img id="previewImage" src="${student.image}" alt="student-image" width="90" height="90">
-            </label>
-            <p class="text-[#000] text-[18px] font-semibold mt-[10px]">name:${student.name}</p>
-            <p class="text-[#000] text-[15px] mt-[5px]">email:${student.email}</p>
-            <p class="text-[#000] text-[15px] mt-[5px]">phone:${student.phone}</p>
-            <p class="text-[#000] text-[15px] mt-[5px]">Enroll Number:${student.EnrollNumber}</p>
-            <p class="text-[#000] text-[15px] mt-[5px]">Admission Date:${student.admissionDate}</p>
-            
-            <div class="flex gap-[10px] mt-[10px] justify-center">
-                <button onclick="closeModal()" class="bg-gray-500 text-white rounded-[4px] px-[20px] py-[10px]">Close</button>
-            </div>
-        </div>
-    `;
-
-
-    userList.classList.add('hidden');
-    modal.classList.remove('hidden');
+    window.location.href = 'about.html';
 }
+
 let sortOrder = 'abc'; 
 
 

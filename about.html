@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Student</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="student-details">
+        <h1>Student Details</h1>
+        <p id="student-name"></p>
+        <p id="student-email"></p>
+        <p id="student-phone"></p>
+        <p id="student-enrollNumber"></p>
+        <p id="student-admissionDate"></p>
+        <img id="student-image" alt="Student Image" />
+    </div>
+
+    
+</body>
+<script>
+    const studentData = JSON.parse(localStorage.getItem('selectedStudent'));
+
+    if (studentData) {
+        document.getElementById('student-name').textContent = `Name: ${studentData.name}`;
+        document.getElementById('student-email').textContent = `Email: ${studentData.email}`;
+        document.getElementById('student-phone').textContent = `Phone: ${studentData.phone}`;
+        document.getElementById('student-enrollNumber').textContent = `Enroll Number: ${studentData.EnrollNumber}`;
+        document.getElementById('student-admissionDate').textContent = `Admission Date: ${studentData.admissionDate}`;
+        document.getElementById('student-image').src = studentData.image;
+    } else {
+
+        document.body.innerHTML = "<p>No student data available.</p>";
+    }
+</script>
+
+
+</html>
