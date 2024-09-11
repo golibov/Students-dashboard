@@ -8,8 +8,8 @@ function addNewStudentBtn() {
             <input type="file" id="rasmTanlash"  required accept="image/*" class="hidden">
             <input id="name" autocomplete="off" required class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enter your name">
             <input id="email" autocomplete="off" required class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="email" placeholder="Enter your email">
-            <input maxlength="10" minlength="10" required id="phone" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="number" placeholder="Enter your phone">
-            <input id="EnrollNumber" autocomplete="off" required class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enroll Number">
+            <input type="tel" maxlength="10" minlength="10" required id="phone" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="number" placeholder="Enter your phone">
+            <input type="number" id="EnrollNumber" autocomplete="off" required class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enroll Number">
             <input type="date" id="admissionDate" autocomplete="off" required class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Date of admission (e.g., 25-Dec-2006)">
             
             <div class="flex gap-[10px] mt-[10px] justify-center">
