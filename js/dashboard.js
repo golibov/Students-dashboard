@@ -6,10 +6,10 @@ function addNewStudentBtn() {
                 <img id="previewImage" src="./images/enter-img.svg" alt="enter-image" width="90" height="90">
             </label>
             <input type="file" id="rasmTanlash" accept="image/*" class="hidden">
-            <input id="name" autocomplete="off" class="w-full  h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enter your name">
-            <input id="email" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enter your email">
+            <input id="name" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enter your name">
+            <input id="email" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="email" placeholder="Enter your email">
             <input maxlength="10" minlength="10" id="phone" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="number" placeholder="Enter your phone">
-            <input maxlength="1" minlength="20" id="EnrollNumber" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="number" placeholder="Enroll Number">
+            <input id="EnrollNumber" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Enroll Number">
             <input id="admissionDate" autocomplete="off" class="w-full h-[44px] pl-[12px] mt-[10px] outline-none rounded-[4px] border-[1px] border-[#E5E5E5] font-semibold text-[15px]" type="text" placeholder="Date of admission (e.g., 25-Dec-2006)">
             
             <div class="flex gap-[10px] mt-[10px] justify-center">
@@ -48,12 +48,17 @@ function closeModal() {
 
 
 function add() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const phone = document.getElementById('phone').value;
-    const EnrollNumber = document.getElementById('EnrollNumber').value;
-    const admissionDate = document.getElementById('admissionDate').value;
+    const name = document.getElementById('name').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const EnrollNumber = document.getElementById('EnrollNumber').value.trim();
+    const admissionDate = document.getElementById('admissionDate').value.trim();
     const previewImage = document.getElementById('previewImage').src;
+
+    if (!name || !email || !phone || !EnrollNumber || !admissionDate) {
+        alert('Please fill all fields.');
+        return;
+    }
 
     const studentData = {
         name: name,
@@ -71,6 +76,7 @@ function add() {
     renderUserList();
     closeModal();
 }
+
 
 function renderUserList() {
     const userList = document.querySelector('.user-list');
@@ -210,6 +216,7 @@ function more(index) {
 
     const modal = document.getElementById('modal');
     const userList = document.querySelector('.user-list');
+    
 
 
     modal.innerHTML = `
@@ -217,11 +224,11 @@ function more(index) {
             <label class="cursor-pointer flex justify-center items-center mx-auto w-[90px] h-[90px] rounded-full bg-gray-100">
                 <img id="previewImage" src="${student.image}" alt="student-image" width="90" height="90">
             </label>
-            <p class="text-[#000] text-[18px] font-semibold mt-[10px]">${student.name}</p>
-            <p class="text-[#000] text-[15px] mt-[5px]">${student.email}</p>
-            <p class="text-[#000] text-[15px] mt-[5px]">${student.phone}</p>
-            <p class="text-[#000] text-[15px] mt-[5px]">${student.EnrollNumber}</p>
-            <p class="text-[#000] text-[15px] mt-[5px]">${student.admissionDate}</p>
+            <p class="text-[#000] text-[18px] font-semibold mt-[10px]">name:${student.name}</p>
+            <p class="text-[#000] text-[15px] mt-[5px]">email:${student.email}</p>
+            <p class="text-[#000] text-[15px] mt-[5px]">phone:${student.phone}</p>
+            <p class="text-[#000] text-[15px] mt-[5px]">Enroll Number:${student.EnrollNumber}</p>
+            <p class="text-[#000] text-[15px] mt-[5px]">Admission Date:${student.admissionDate}</p>
             
             <div class="flex gap-[10px] mt-[10px] justify-center">
                 <button onclick="closeModal()" class="bg-gray-500 text-white rounded-[4px] px-[20px] py-[10px]">Close</button>
@@ -233,7 +240,7 @@ function more(index) {
     userList.classList.add('hidden');
     modal.classList.remove('hidden');
 }
-let sortOrder = 'asc'; 
+let sortOrder = 'abc'; 
 
 
 function sortStudents() {
