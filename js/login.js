@@ -23,7 +23,7 @@ elLogin.addEventListener("submit", (e) => {
             setTimeout(() => {
                 location.href = "./dashboard.html";
             }, 1000);
-        } else if (data.username === "Golibov" && data.password === "Golibov6002") {
+        } else if (data.username === "abc1011" && data.password === "abc1011") {
             localStorage.setItem("loginData", JSON.stringify(data));
             setTimeout(() => {
                 location.href = "../../admin.html";
